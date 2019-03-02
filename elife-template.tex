@@ -64,40 +64,22 @@ As in our previous study, only a single stereoisomer was considered for the 1-me
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=0.49\textwidth]{images/host-guest-pairs.png}
+\includegraphics[width=\textwidth]{images/host-guest-pairs.png}
 \caption{\drsnote{This figure is taken from Niel's paper. If I am not going to modify it, I ought to get permission for its reuse.}}
 \label{fig:host-guest-pairs}
 \end{figure}
 
 \subsection{Application of force field parameters}
+% Note about GAFF v1.7 parameters come from Niel's 2017 paper.
+% \drsnote{How much detail do we need here, given the GAFF v1.7 parameterization scheme is well described by Niel's paper?}
+\subsubsection{SMIRNOFF99Frosst}
+
+
 Molecular coordinates for the 43 host-guest complexes parameterized with the GAFF v1.7 force field, AM1-BCC partial atomic charges on both host and guest molecules, and solvated with the TIP3P water model were used from our previous study \cite{henriksen_evaluating_2017}.
 
+These calculations were performed with the Open Force Field Toolkit to version 0.0.3 and SMRINOFF99Frosst version 1.0.5.
 
-
-\drsnote{How much detail do we need here, given the GAFF v1.7 parameterization scheme is well described by Niel's paper?}
-To convert these 
-
-
-The GAFF v1.7 and SMIRNOFF99Frosst simulations had identical initial coordinates in each simulation window for each host-guest pair, whereas the GAFF v2.1 simulations were re-solvated. 
-\drsnote{Verify this is correct with Niel.}
-
-Briefly, the cyclodextrin hosts were parameterized using a single glucose molecule.
-
-We used the parameters from ...
-
-Then we modified the parameters to be either GAFF v2.1 or SMIRNOFF99Frosst. 
-
-We took advantage of... 
-
-Host-guest systems were parameterized with 
-
-GAFF v1.7 from Niel
-GAFF v2.1 from AMBER18.
-
-
-A single glucose molecule with methoxy caps on the O1 and O4 alcohols... AM1-BCC partial charges and GAFF v.17 Lennard-Jones and valence parameters.
-
-GAFF v2.1 
+\subsubsection{GAFF v2.1}
 
 \subsection{Simulations}
 GAFF v1.7 simulations were performed with AMBER16; GAFF v2.1 and SMIRNOFF99Frosst simulations were performed with AMBER18 molecular dynamics software.
@@ -105,10 +87,7 @@ GAFF v1.7 simulations were performed with AMBER16; GAFF v2.1 and SMIRNOFF99Fross
 - 2000 or 2210 waters.
 
 
-The coordinates were ketp the same, but force field parameters were converted via this package.
 
-
-These calculations were performed with the Open Force Field Toolkit to version 0.0.3 and SMRINOFF99Frosst version 1.0.5.
 
 
 \subsection{Thermodynamic calculations}
@@ -151,7 +130,12 @@ SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field p
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Code and data availability}
-
+\begin{itemize}
+	\item Code to convert from GAFF to SMIRNOFF99Frosst
+	\item Code to setup the simulations using pAPRika
+	\item Code to analyze the simulation results
+	\item OpenFF code and link to SMIRNOFF99Frosst
+\end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Author Contributions 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
