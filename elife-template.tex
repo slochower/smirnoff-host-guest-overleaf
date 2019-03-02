@@ -4,18 +4,16 @@
 %%% PREAMBLE 
 \documentclass[9pt,lineno]{elife}
 
-\usepackage{lipsum} % Required to insert dummy text
 \usepackage[version=4]{mhchem}
 \usepackage{siunitx}
-
-\usepackage{makecell} % Allow splitting table cells into multiple lines.
+\usepackage{makecell}
 \usepackage[colorinlistoftodos]{todonotes} % To add todos.
 \DeclareSIUnit\Molar{M}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% ARTICLE SETUP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Benchmarking SMIRNOFF99Frosst using host-guest calculations}
+\title{Binding thermodynamics of host-guest systems with SMIRNOFF99Frosst, an Open Force Field Group product}
 
 \author[1]{David R. Slochower}
 \author[2]{Niel M. Henriksen}
@@ -59,7 +57,9 @@
 \section{Methods}
 \subsection{Host-guest systems}
 
-In this manuscript, we report the binding thermodynamics for 43 host-guest complexes which were experimentally characterized in \cite{rekharsky_thermodynamic_1997} and previously studied in \cite{henriksen_evaluating_2017}. The host molecules are $\alpha$- or $\beta$-cyclodextrin with guests that can be characterized by their functional group as either ammonium, carboxylate, or cyclic alcohol.
+In this manuscript, we report the binding thermodynamics for 43 host-guest complexes which were experimentally characterized in \cite{rekharsky_thermodynamic_1997} and previously studied in \cite{henriksen_evaluating_2017}. The host molecules are $\alpha$- or $\beta$-cyclodextrin with guests that can be characterized by their functional group as either ammonium, carboxylate, or cyclic alcohol. As before, only one stereoisomer was considered by the 1-methylammonium guests as it was unclear from the experimental details whether a mixture was used, and if so, what ratio was used.
+
+To aid in benchmarking, we used exactly the same hosts and guests as our previous study.
 
 \subsection{Force field parameters}
 Host-guest systems were parameterized with 
@@ -76,6 +76,16 @@ GAFF v2.1
 
 \subsection{Simulations}
 GAFF v1.7 simulations were performed with AMBER16; GAFF v2.1 and SMIRNOFF99Frosst simulations were performed with AMBER18 molecular dynamics software.
+
+- 2000 or 2210 waters.
+
+
+The coordinates were ketp the same, but force field parameters were converted via this package.
+
+
+These calculations were performed with the Open Force Field Toolkit to version 0.0.3 and SMRINOFF99Frosst version 1.0.5.
+
+
 \subsection{Thermodynamic calculations}
 We used the attach-pull-release (APR) method as implemented in the open source package pAPRika, version 0.0.3.
 
@@ -84,17 +94,30 @@ A complete description of the APR method is described in \cite{henriksen_computa
 \section{Results}
 SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field parameters.
 
-Text.
+
 \begin{figure}[tb]
 \centering
-\includegraphics[width=0.5\textwidth]{images/SMIRNOFF99Frosst-vs-Experiment-dG.pdf}
-\includegraphics[width=0.5\textwidth]{images/SMIRNOFF99Frosst-vs-Experiment-dH.pdf}
-\vspace{0.1cm}
+\includegraphics[width=0.49\textwidth]{images/SMIRNOFF99Frosst-vs-Experiment-dG.pdf}
+\includegraphics[width=0.49\textwidth]{images/SMIRNOFF99Frosst-vs-Experiment-dH.pdf}
 \caption{Caption}
 \label{fig:S99-vs-experiment}
-\vspace{-0.6cm}
 \end{figure}
-Text.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/GAFF-v1.7-vs-Experiment-dG}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/GAFF-v1.7-vs-Experiment-dH}.pdf}
+\caption{Caption}
+\label{fig:GAFF-v17-vs-experiment}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/GAFF-v2.1-vs-Experiment-dG}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/GAFF-v2.1-vs-Experiment-dH}.pdf}
+\caption{Caption}
+\label{fig:GAFF-v21-vs-experiment}
+\end{figure}
 
 \section{Discussion}
 
