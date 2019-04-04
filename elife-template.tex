@@ -13,7 +13,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% ARTICLE SETUP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Binding thermodynamics of host-guest systems with SMIRNOFF99Frosst, an Open Force Field Group product}
+\title{Binding thermodynamics of host-guest systems with SMIRNOFF99Frosst from the Open Force Field Group}
 
 \author[1]{David R. Slochower}
 \author[2]{Niel M. Henriksen}
@@ -46,7 +46,7 @@
 \begin{document}
 
 \maketitle
-\drsnote{I have only included authors who reviewed the outline; I'm willing to revisit this issue in the future.}
+\drsnote{I have only included authors who reviewed the outline so far.}
 
 \begin{abstract}
 
@@ -54,28 +54,35 @@
 
 \section{Introduction}
 
+\section{Theory and motivation}
+
+
+
 \section{Methods}
 \subsection{Choice of host-guest systems}
 In this study, we report the binding thermodynamics of 43 host-guest complexes (Figure \ref{fig:host-guest-pairs}) computed using three different force fields. 
 The complexes consist of either $\alpha$- or $\beta$-cyclodextrin as host molecule and a series of ammonium, carboxylate, or cyclic alcohol small molecule guests.
 The equilibrium constants and standard molar enthalpies of binding for these 43 complexes have been measured using isothermal titration calorimetry \cite{rekharsky_thermodynamic_1997} and computationally in \cite{henriksen_evaluating_2017}.
-As in our previous study, only a single stereoisomer was considered for the 1-methylammonium guests.
-\drsnote{Which stereoisomer was it?}
+As in \cite{henriksen_evaluating_2017}, only a single structural isomer was considered for the 1-methylammonium guests.
+\drsnote{Niel described this as a stereoisomer, but I think it is actually a structural isomer, unless I'm misunderstanding.}
 
 \begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{images/host-guest-pairs.png}
-\caption{\drsnote{This figure is taken from Niel's paper. If I am not going to modify it, I ought to get permission for its reuse.}}
+\caption{\drsnote{This figure is taken from Niel's paper. If we don't modify it, we should get permission for its reuse.}}
 \label{fig:host-guest-pairs}
 \end{figure}
 
 \subsection{Application of force field parameters}
 % Note about GAFF v1.7 parameters come from Niel's 2017 paper.
 % \drsnote{How much detail do we need here, given the GAFF v1.7 parameterization scheme is well described by Niel's paper?}
+\subsection{GAFF v1.7}
+
 \subsubsection{SMIRNOFF99Frosst}
 
 
 Molecular coordinates for the 43 host-guest complexes parameterized with the GAFF v1.7 force field, AM1-BCC partial atomic charges on both host and guest molecules, and solvated with the TIP3P water model were used from our previous study \cite{henriksen_evaluating_2017}.
+Each window in each system was then 
 
 These calculations were performed with the Open Force Field Toolkit to version 0.0.3 and SMRINOFF99Frosst version 1.0.5.
 
@@ -95,8 +102,9 @@ We used the attach-pull-release (APR) method as implemented in the open source p
 
 A complete description of the APR method is described in \cite{henriksen_computational_2015}.
 
-\section{Results}
+\section{Results and discussion}
 SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field parameters.
+
 
 
 \begin{figure}[tb]
@@ -123,7 +131,7 @@ SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field p
 \label{fig:GAFF-v21-vs-experiment}
 \end{figure}
 
-\section{Discussion}
+\section{Conclusions and future work}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Code and Data Availability
