@@ -54,14 +54,14 @@
 
 \section{Introduction}
 
+
 \section{Theory and motivation}
-
-
 
 \section{Methods}
 \subsection{Choice of host-guest systems}
 In this study, we report the binding thermodynamics of 43 host-guest complexes (Figure \ref{fig:host-guest-pairs}) computed using three different force fields. 
 The complexes consist of either $\alpha$- or $\beta$-cyclodextrin as host molecule and a series of ammonium, carboxylate, or cyclic alcohol small molecule guests.
+Cyclodextrins are cyclic polymers consisting of six ($\alpha$) or seven ($\beta$) glucose monomers in the shape of a truncated cone.
 The equilibrium constants and standard molar enthalpies of binding for these 43 complexes have been measured using isothermal titration calorimetry \cite{rekharsky_thermodynamic_1997} and computationally in \cite{henriksen_evaluating_2017}.
 As in \cite{henriksen_evaluating_2017}, only a single structural isomer was considered for the 1-methylammonium guests.
 \drsnote{Niel described this as a stereoisomer, but I think it is actually a structural isomer, unless I'm misunderstanding.}
@@ -69,22 +69,32 @@ As in \cite{henriksen_evaluating_2017}, only a single structural isomer was cons
 \begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{images/host-guest-pairs.png}
-\caption{\drsnote{This figure is taken from Niel's paper. If we don't modify it, we should get permission for its reuse.}}
+\caption{Structures of the two cyclodextrin hosts and 33 guest molecules in this study which together comprise 43 unique host-guest pairs. \drsnote{This figure is taken from Niel's paper. If we don't modify it, we should get permission for its reuse.}}
 \label{fig:host-guest-pairs}
 \end{figure}
 
 \subsection{Application of force field parameters}
-% Note about GAFF v1.7 parameters come from Niel's 2017 paper.
-% \drsnote{How much detail do we need here, given the GAFF v1.7 parameterization scheme is well described by Niel's paper?}
+
+
+For each force field combination, we used AM1-BCC charges computed using AMBER's \texttt{antechamber} on both the hosts and guests.
+
+We wished to compare force fields directly, and as such, we used AM1-BCC partial atomic charges in each case.
+
+The Lennard-Jones and 
+
 \subsection{GAFF v1.7}
+% Note about GAFF v1.7 parameters come from Niel's 2017 paper.
+
+These simulations were performed as part of Henriksen, et al. \cite{henriksen_evaluating_2017}.
 
 \subsubsection{SMIRNOFF99Frosst}
+SMIRNOFF99Frosst derives from... 
 
 
 Molecular coordinates for the 43 host-guest complexes parameterized with the GAFF v1.7 force field, AM1-BCC partial atomic charges on both host and guest molecules, and solvated with the TIP3P water model were used from our previous study \cite{henriksen_evaluating_2017}.
 Each window in each system was then 
 
-These calculations were performed with the Open Force Field Toolkit to version 0.0.3 and SMRINOFF99Frosst version 1.0.5.
+These calculations were performed with the Open Force Field Toolkit version 0.0.3 and SMIRNOFF99Frosst version 1.0.5.
 
 \subsubsection{GAFF v2.1}
 
@@ -92,7 +102,7 @@ These calculations were performed with the Open Force Field Toolkit to version 0
 GAFF v1.7 simulations were performed with AMBER16; GAFF v2.1 and SMIRNOFF99Frosst simulations were performed with AMBER18 molecular dynamics software.
 
 - 2000 or 2210 waters.
-
+- TIP3P, Na+/Cl- only
 
 
 
@@ -105,7 +115,7 @@ A complete description of the APR method is described in \cite{henriksen_computa
 \section{Results and discussion}
 SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field parameters.
 
-
+\subsection{Binding free energies and enthalpies}
 
 \begin{figure}[tb]
 \centering
@@ -130,6 +140,14 @@ SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field p
 \caption{Caption}
 \label{fig:GAFF-v21-vs-experiment}
 \end{figure}
+
+\subsection{Selecitivity between orienations
+
+\subsection{Selectivity between host molecule}
+
+\subsection{Structural insights}
+
+
 
 \section{Conclusions and future work}
 
@@ -168,5 +186,5 @@ The authors declare the following competing financial interest(s): MKG has an eq
 
 \appendix
 \section{List of abbreviations}
-APR, attach-pull-release
+APR, attach-pull-release; CD, cyclodextrin; GAFF, Generalized AMBER Force Field
 \end{document}
