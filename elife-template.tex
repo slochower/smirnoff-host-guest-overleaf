@@ -78,14 +78,27 @@ We sought to compare force fields directly, and as such, attempted to minimize a
 In all simulations, we applied AM1-BCC \cite{jakalian_fast_2000, jakalian_fast_2002} partial atomic charges to both the host and guest molecules using the \texttt{antechamber} program.
 The host charges were calculated using a single glucose molecule with methoxy caps on the O1 and O4 alcohols (Figure \ref{fig:atom-names}); each glucose monomer in the cyclodextrin polymer has identical charges.
 
-GAFF v1.7 bond, angle, dihedral, and Lennard-Jones parameters were applied using the \texttt{tleap} program.
+GAFF v1.7 bond, angle, torsion, and Lennard-Jones parameters were applied using the \texttt{tleap} program distributed with AmberTools16.
 These simulations were performed as part of Henriksen, et al.~\cite{henriksen_evaluating_2017}.
 
+GAFF v2.1 parameters were applied in an identical manner to the GAFF v1.7 parameters, using the \texttt{tleap} program distributed with AmberTools18 and the \texttt{leaprc.gaff2} file.
+In GAFF v2.1, the bond and angle parameters have been updated to reproduce small molecule geometries obtained from high-level quantum mechanical calculations.
+The force constants for the bond and angle parameters were tuned to reproduce the vibrational spectra of over 600 molecules.
+The torsion parameters were optimized to reproduce the rotational potential energy surface of 400 model compounds.
+Finally, the Lennard-Jones coefficients were redeveloped to reproduce interaction energies and pure liquid properties.
 
-Molecular coordinates for the 43 host-guest complexes parameterized with the GAFF v1.7 force field, AM1-BCC partial atomic charges on both host and guest molecules, and solvated with the TIP3P water model were used from our previous study \cite{henriksen_evaluating_2017}.
-Each window in each system was then 
+To apply SMIRNOFF99Frosst, we followed a \href{https://github.com/slochower/smirnoff-host-guest/blob/master/02-convert-APR-files.ipynb}{multistep process}, beginning with the prepared GAFF v1.7 files.
+First, we split the structure into the host-guest complex and the solvent.
+From the host-guest complex, we created a topology and Tripos mol2-file.
+We used OpenEye tools to turn this into a topology.
+Parameterized using the OpenFF toolkit.
+Used ParmEd (http://dx.doi.org/10.1007/s10822-016-9977-1) to combine the host and guest with teh solvent.
+
+In this way, we replace the force field without changing the molecular coordinates.
+
 
 These calculations were performed with the Open Force Field Toolkit version 0.0.3, SMIRNOFF version 1.0, and SMIRNOFF99Frosst version 1.0.5.
+
 
 \subsection{Simulations}
 GAFF v1.7 simulations were performed with AMBER16; GAFF v2.1 and SMIRNOFF99Frosst simulations were performed with AMBER18 molecular dynamics software.
@@ -94,6 +107,9 @@ GAFF v1.7 simulations were performed with AMBER16; GAFF v2.1 and SMIRNOFF99Fross
 - TIP3P, Na+/Cl- only
 
 
+
+Molecular coordinates for the 43 host-guest complexes parameterized with the GAFF v1.7 force field, AM1-BCC partial atomic charges on both host and guest molecules, and solvated with the TIP3P water model were used from our previous study \cite{henriksen_evaluating_2017}.
+Each window in each system was then 
 
 
 \subsection{Thermodynamic calculations}

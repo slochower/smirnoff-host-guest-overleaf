@@ -1,0 +1,56 @@
+\begin{thebibliography}{5}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\urlprefix}{}
+\providecommand{\doiprefix}{doi: }
+
+\bibitem[{Rekharsky et~al.(1997)Rekharsky, Mikhail V. and Mayhew, Martin P. and
+  Goldberg, Robert N. and Ross, Philip D. and Yamashoji, Yuko and Inoue,
+  Yoshihisa}]{rekharsky_thermodynamic_1997}
+\textbf{\color{eLifeMediumGrey} Rekharsky MV}, Mayhew MP, Goldberg RN, Ross PD,
+  Yamashoji Y, Inoue Y.
+\newblock Thermodynamic and {Nuclear} {Magnetic} {Resonance} {Study} of the
+  {Reactions} of α- and β-{Cyclodextrin} with {Acids}, {Aliphatic} {Amines},
+  and {Cyclic} {Alcohols}.
+\newblock The Journal of Physical Chemistry B.  1997 Jan; 101(1):87--100.
+\newblock \urlprefix\url{https://doi.org/10.1021/jp962715n},
+  \href{https://dx.doi.org/10.1021/jp962715n}{\doiprefix
+  \detokenize{10.1021/jp962715n}}.
+
+\bibitem[{Henriksen and Gilson(2017)Henriksen, Niel M. and Gilson, Michael
+  K.}]{henriksen_evaluating_2017}
+\textbf{\color{eLifeMediumGrey} Henriksen NM}, Gilson MK.
+\newblock Evaluating {Force} {Field} {Performance} in {Thermodynamic}
+  {Calculations} of {Cyclodextrin} {Host}–{Guest} {Binding}: {Water}
+  {Models}, {Partial} {Charges}, and {Host} {Force} {Field} {Parameters}.
+\newblock Journal of Chemical Theory and Computation.  2017 Sep;
+  13(9):4253--4269.
+\newblock \urlprefix\url{http://pubs.acs.org/doi/10.1021/acs.jctc.7b00359},
+  \href{https://dx.doi.org/10.1021/acs.jctc.7b00359}{\doiprefix
+  \detokenize{10.1021/acs.jctc.7b00359}}.
+
+\bibitem[{Jakalian et~al.(2000)Jakalian, A. and Bush, B. L. and Jack, D. B. and
+  Bayly, C. I.}]{jakalian_fast_2000}
+\textbf{\color{eLifeMediumGrey} Jakalian A}, Bush BL, Jack DB, Bayly CI.
+\newblock Fast, {Efficient} {Generation} of {High}-{Quality} {Atomic}
+  {Charges}. {AM}1-{BCC} {Model}: {I}. {Method}.
+\newblock J Comput Chem.  2000; 21(2):132.
+
+\bibitem[{Jakalian et~al.(2002)Jakalian, A. and Jack, D. B. and Bayly, C.
+  I.}]{jakalian_fast_2002}
+\textbf{\color{eLifeMediumGrey} Jakalian A}, Jack DB, Bayly CI.
+\newblock Fast, {Efficient} {Generation} of {High}-{Quality} {Atomic}
+  {Charges}. {AM}1-{BCC} {Model}: {II}. {Parameterization} and {Validation}.
+\newblock J Comput Chem.  2002; 23(16):1623.
+
+\bibitem[{Henriksen et~al.(2015)Henriksen, Niel M. and Fenley, Andrew T. and
+  Gilson, Michael K.}]{henriksen_computational_2015}
+\textbf{\color{eLifeMediumGrey} Henriksen NM}, Fenley AT, Gilson MK.
+\newblock Computational {Calorimetry}: {High}-{Precision} {Calculation} of
+  {Host}–{Guest} {Binding} {Thermodynamics}.
+\newblock Journal of Chemical Theory and Computation.  2015 Sep;
+  11(9):4377--4394.
+\newblock \urlprefix\url{http://pubs.acs.org/doi/10.1021/acs.jctc.5b00405},
+  \href{https://dx.doi.org/10.1021/acs.jctc.5b00405}{\doiprefix
+  \detokenize{10.1021/acs.jctc.5b00405}}.
+
+\end{thebibliography}
