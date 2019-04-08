@@ -74,29 +74,18 @@ As in \cite{henriksen_evaluating_2017}, only a single structural isomer was cons
 \end{figure}
 
 \subsection{Application of force field parameters}
+We sought to compare force fields directly, and as such, attempted to minimize additional differences between the simulations.
+In all simulations, we applied AM1-BCC \cite{jakalian_fast_2000, jakalian_fast_2002} partial atomic charges to both the host and guest molecules using the \texttt{antechamber} program.
+The host charges were calculated using a single glucose molecule with methoxy caps on the O1 and O4 alcohols (Figure \ref{fig:atom-names}); each glucose monomer in the cyclodextrin polymer has identical charges.
 
-
-For each force field combination, we used AM1-BCC charges computed using AMBER's \texttt{antechamber} on both the hosts and guests.
-
-We wished to compare force fields directly, and as such, we used AM1-BCC partial atomic charges in each case.
-
-The Lennard-Jones and 
-
-\subsection{GAFF v1.7}
-% Note about GAFF v1.7 parameters come from Niel's 2017 paper.
-
-These simulations were performed as part of Henriksen, et al. \cite{henriksen_evaluating_2017}.
-
-\subsubsection{SMIRNOFF99Frosst}
-SMIRNOFF99Frosst derives from... 
+GAFF v1.7 bond, angle, dihedral, and Lennard-Jones parameters were applied using the \texttt{tleap} program.
+These simulations were performed as part of Henriksen, et al.~\cite{henriksen_evaluating_2017}.
 
 
 Molecular coordinates for the 43 host-guest complexes parameterized with the GAFF v1.7 force field, AM1-BCC partial atomic charges on both host and guest molecules, and solvated with the TIP3P water model were used from our previous study \cite{henriksen_evaluating_2017}.
 Each window in each system was then 
 
-These calculations were performed with the Open Force Field Toolkit version 0.0.3 and SMIRNOFF99Frosst version 1.0.5.
-
-\subsubsection{GAFF v2.1}
+These calculations were performed with the Open Force Field Toolkit version 0.0.3, SMIRNOFF version 1.0, and SMIRNOFF99Frosst version 1.0.5.
 
 \subsection{Simulations}
 GAFF v1.7 simulations were performed with AMBER16; GAFF v2.1 and SMIRNOFF99Frosst simulations were performed with AMBER18 molecular dynamics software.
@@ -114,6 +103,8 @@ A complete description of the APR method is described in \cite{henriksen_computa
 
 \section{Results and discussion}
 SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field parameters.
+
+\subsection{Parameter differences}
 
 \subsection{Binding free energies and enthalpies}
 
@@ -141,13 +132,33 @@ SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field p
 \label{fig:GAFF-v21-vs-experiment}
 \end{figure}
 
-\subsection{Selecitivity between orienations
+Both SMIRNOFF99Frosst and GAFF v1.7 systematically underestimate the binding free energy for cyclic alcohols except for beta-cyclodextrin with cyclopentanol (b-cpe).
 
-\subsection{Selectivity between host molecule}
+GAFF v1.7 has better correlations wiht the experimental data, specifcally with the orange points (ammonium, I think), which gets even better in GAFF v2.1, despite an increased systematic offset. 
+
+
+\subsection{Guest preferences between binding orientations}
+
+
+Cyclic ones can’t push away form theydorxyls so they prefer secondary (especially for alpha).
+
+The amines stick out into solution.
+
+
+\subsection{Guest preferences between $\alpha$- and $\beta$-cyclodextrin}
+
+For beta, not as big a difference between orientations for the cyclic ones. Until you get to cyclo-octanol, whih is not due to clashing, genuine steric repuslion.
+
+A-coc-p doesn’t bind in teh cavity. Secondayr is closer, but not greawt either.
+
+
 
 \subsection{Structural insights}
 
+The flexibility of SMIRNOFF99Frosst is similiar to that of GAFF 1.7.
+The flexibility of GAFF v2.1 is similar to other carbohydrate specific force fields.
 
+Include the torsion profile plots, too.
 
 \section{Conclusions and future work}
 
@@ -172,11 +183,11 @@ Conceptualization, DRS, NMH, JDC, MKG; Methodology, DRS, NMH; Software, DRS, NMH
 % Acknowledgments 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Acknowledgments}
-The authors declare the following competing financial interest(s): MKG has an equity interest in and is a cofounder and scientific advisor of VeraChem LLC.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Disclosures 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Disclosures}
+The authors declare the following competing financial interest(s): MKG has an equity interest in and is a cofounder and scientific advisor of VeraChem LLC.
 
 \bibliography{references}
 
@@ -185,6 +196,14 @@ The authors declare the following competing financial interest(s): MKG has an eq
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \appendix
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{images/atom-names-trimer.png}
+\includegraphics[width=0.49\textwidth]{images/gaff-atom-types.png}
+\caption{Atom names (left) and GAFF atom types (right) for a glucose monomer in alpha-cyclodextrin, shown with two flanking monomers. The remaining three glucose monomers are hidden for clarity.}
+\label{fig:atom-names}
+\end{figure}
+
 \section{List of abbreviations}
 APR, attach-pull-release; CD, cyclodextrin; GAFF, Generalized AMBER Force Field
 \end{document}
