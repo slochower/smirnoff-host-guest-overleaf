@@ -147,8 +147,6 @@ SMIRNOFF99Frosst simulations calculations were run for 10 ns per window.
 \section{Results and discussion}
 SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field parameters.
 
-\subsection{Parameter differences}
-
 \subsection{Binding free energies and enthalpies}
 
 \begin{figure}[tb]
@@ -175,11 +173,54 @@ SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field p
 \label{fig:GAFF-v21-vs-experiment}
 \end{figure}
 
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-bond-k}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-bond-k}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-bond-req}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-bond-req}.pdf}
+\caption{Caption}
+\label{fig:bond}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-ang-k}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-ang-k}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-ang-theta}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-ang-theta}.pdf}
+\caption{Caption}
+\label{fig:angle}
+\end{figure}
+
+
 \drsnote{I wonder whether I should rename "SMIRNOFF99Frosst" to whatever the new versioning string actually is.}
 
 Both SMIRNOFF99Frosst and GAFF v1.7 systematically underestimate the binding free energy for cyclic alcohols except for beta-cyclodextrin with cyclopentanol (b-cpe).
 
 GAFF v1.7 has better correlations wiht the experimental data, specifcally with the orange points (ammonium, I think), which gets even better in GAFF v2.1, despite an increased systematic offset. 
+
+
+\susbsection{Parameter comparisons with GAFF v1.7 and GAFF v2.1}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-sigma}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-sigma}.pdf}
+\caption{Caption}
+\label{fig:sigma}
+\end{figure}
+
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-epsilon}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-epsilon}.pdf}
+\caption{Caption}
+\label{fig:epsilon}
+\end{figure}
+
 
 
 \subsection{Guest preferences between binding orientations}
@@ -188,6 +229,9 @@ GAFF v1.7 has better correlations wiht the experimental data, specifcally with t
 Cyclic ones can’t push away form theydorxyls so they prefer secondary (especially for alpha).
 
 The amines stick out into solution.
+
+
+
 
 
 \subsection{Guest preferences between $\alpha$- and $\beta$-cyclodextrin}
@@ -204,6 +248,18 @@ The flexibility of SMIRNOFF99Frosst is similiar to that of GAFF 1.7.
 The flexibility of GAFF v2.1 is similar to other carbohydrate specific force fields.
 
 Include the torsion profile plots, too.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-H1-C2-C2-O2}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-C1-O1-C4-C3}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-O1-C4-C3-O3}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-O1-C4-C5-O5}.pdf}
+\caption{Caption}
+\label{fig:dihedral-energy}
+\end{figure}
+
+\drsnote{Include VMD rendering}
 
 \section{Conclusions and future work}
 
