@@ -221,7 +221,10 @@ GAFF v1.7 has better correlations wiht the experimental data, specifcally with t
 \label{fig:epsilon}
 \end{figure}
 
+% About Q4MD: . This force field is a combination of GLYCAM04(44-46) and Amber99SB(47) and has been reported to have good performances toward CDs using the Amber 10 software(48) in a recent paper.(43)
+% https://pubs.acs.org/doi/full/10.1021/jp308416p
 
+% Q4MD citation: https://pubs.rsc.org/en/content/articlelanding/2011/cp/c1cp20854c/unauth#!divAbstract
 
 \subsection{Guest preferences between binding orientations}
 
@@ -231,7 +234,23 @@ Cyclic ones can’t push away form theydorxyls so they prefer secondary (especia
 The amines stick out into solution.
 
 
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-dG-by-orientation-highlight}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-dG-by-orientation-highlight}.pdf}
+\caption{Caption}
+\label{fig:epsilon}
+\end{figure}
 
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-dG-by-orientation-highlight}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/GAFF-v1.7-dG-by-orientation-highlight}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/GAFF-v2.1-dG-by-orientation-highlight}.pdf}
+
+\caption{Caption \drsnote{I think I've done the P/S labeling backwards.}}
+\label{fig:epsilon}
+\end{figure}
 
 
 \subsection{Guest preferences between $\alpha$- and $\beta$-cyclodextrin}
@@ -240,6 +259,26 @@ For beta, not as big a difference between orientations for the cyclic ones. Unti
 
 A-coc-p doesn’t bind in teh cavity. Secondayr is closer, but not greawt either.
 
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-Experiment-dG-by-cyclodextrin}.pdf}
+\caption{Caption}
+\label{fig:epsilon}
+\end{figure}
+
+\subsection{Functional group patterns}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-Experiment-dG-highlight-alpha-alcohols}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-Experiment-dG-highlight-beta-alcohols}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-Experiment-dG-highlight-alpha-ammonium}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-Experiment-dG-highlight-beta-ammonium}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-Experiment-dG-highlight-alpha-carboxylates}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-Experiment-dG-highlight-beta-carboxylates}.pdf}
+\caption{Caption}
+\label{fig:epsilon}
+\end{figure}
 
 
 \subsection{Structural insights}
@@ -258,6 +297,8 @@ Include the torsion profile plots, too.
 \caption{Caption}
 \label{fig:dihedral-energy}
 \end{figure}
+
+% See SI table 1: https://pubs.acs.org/doi/full/10.1021/jp308416p#notes-1
 
 \drsnote{Include VMD rendering}
 
@@ -304,6 +345,17 @@ The authors declare the following competing financial interest(s): MKG has an eq
 \caption{Atom names (left) and GAFF atom types (right) for a glucose monomer in alpha-cyclodextrin, shown with two flanking monomers. The remaining three glucose monomers are hidden for clarity.}
 \label{fig:atom-names}
 \end{figure}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-dG-by-orientation-all}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/GAFF-v1.7-dG-by-orientation-all}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/GAFF-v2.1-dG-by-orientation-all}.pdf}
+
+\caption{Caption.}
+\label{fig:epsilon}
+\end{figure}
+
 
 \section{List of abbreviations}
 APR, attach-pull-release; CD, cyclodextrin; GAFF, Generalized AMBER Force Field
