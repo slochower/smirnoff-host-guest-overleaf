@@ -143,6 +143,8 @@ SMIRNOFF99Frosst simulations calculations were run for 10 ns per window.
 
 %All simulations were performed with either the AMBER 14 or 163 molecular dynamics software. For each simulation window, the entire system was rebuilt using AMBER's tleap utility, thus ensuring that the initial solvent configuration in each window was independent of that in the other windows. The periodic box was orthorhombic, with dimensions of approximately 35x35x51 Å and 37x37x51 Å for αCD and βCD simulations, respectively. The host-guest system was oriented in the simulation box, via non-interacting anchor particles, which allowed the APR process to occur along the long (z) axis of the box; see Henriksen et al. for details.40  The parameter/topology file was then hydrogen mass repartitioned (HMR) with AMBER's parmed utility, a process which increases solute hydrogen atom masses to 3.024 Da by transferring mass from adjacent heavy atoms, thereby allowing larger simulation time steps without integration errors or significant changes to the thermodynamics.40,53,54 All equilibration and production simulations were carried out with the GPU-capable pmemd.cuda MD engine. Equilibration consisted of 50,000 steps of energy minimization, followed by 100 ps of NVT warming from 0 - 298.15 K, and 2000 ps of NPT equilibration at 298.15 K.  Production simulations were run for a minimum of 5.0 ns out to a maximum of 50 ns, with the exact length determined by a threshold in the restraint coordinate uncertainty. All simulations used a time step of 4 fs, enabled by HMR, with a Langevin thermostat55 and a Monte-Carlo barostat.56 The non-bonded cutoff was set to 9.0 Å and the default AMBER PME parameters (identical for AMBER 14 and 16) were employed.
 
+\subsection{Statistics}
+The overall RMSE and R2 values for each comparison are reported as the mean with the 95\% confidence interval in brackets after 100,000 bootstrapping cycles. The R2 values for each functional group subset is reported in the bottom right corner.
 
 \section{Results and discussion}
 SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field parameters.
@@ -153,7 +155,7 @@ SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field p
 \centering
 \includegraphics[width=0.49\textwidth]{images/SMIRNOFF99Frosst-vs-Experiment-dG.pdf}
 \includegraphics[width=0.49\textwidth]{images/SMIRNOFF99Frosst-vs-Experiment-dH.pdf}
-\caption{Caption}
+\caption{Comparison of calculated absolute binding free energies ($\Delta$G) and binding enthalpies ($\Delta$H) with experiment with SMIRNOFF99Frosst parameters applied to both host and guest. The orange, blue, and purple coloring distinguish the functional group of the guest as an ammonium, alcohol, or carboxylate, respectively.}
 \label{fig:S99-vs-experiment}
 \end{figure}
 
@@ -161,7 +163,7 @@ SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field p
 \centering
 \includegraphics[width=0.49\textwidth]{{images/GAFF-v1.7-vs-Experiment-dG}.pdf}
 \includegraphics[width=0.49\textwidth]{{images/GAFF-v1.7-vs-Experiment-dH}.pdf}
-\caption{Caption}
+\caption{Comparison of calculated absolute binding free energies ($\Delta$G) and binding enthalpies ($\Delta$H) with experiment with GAFF v1.7 parameters applied to both host and guest. The orange, blue, and purple coloring distinguish the functional group of the guest as an ammonium, alcohol, or carboxylate, respectively.}
 \label{fig:GAFF-v17-vs-experiment}
 \end{figure}
 
@@ -169,10 +171,33 @@ SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field p
 \centering
 \includegraphics[width=0.49\textwidth]{{images/GAFF-v2.1-vs-Experiment-dG}.pdf}
 \includegraphics[width=0.49\textwidth]{{images/GAFF-v2.1-vs-Experiment-dH}.pdf}
-\caption{Caption}
+\caption{Comparison of calculated absolute binding free energies ($\Delta$G) and binding enthalpies ($\Delta$H) with experiment with GAFF v2.1 parameters applied to both host and guest. The orange, blue, and purple coloring distinguish the functional group of the guest as an ammonium, alcohol, or carboxylate, respectively.}
 \label{fig:GAFF-v21-vs-experiment}
 \end{figure}
 
+
+
+Both SMIRNOFF99Frosst and GAFF v1.7 systematically underestimate the binding free energy for cyclic alcohols except for beta-cyclodextrin with cyclopentanol (b-cpe).
+
+GAFF v1.7 has better correlations wiht the experimental data, specifcally with the orange points (ammonium, I think), which gets even better in GAFF v2.1, despite an increased systematic offset. 
+
+
+\susbsection{Parameter comparisons with GAFF v1.7 and GAFF v2.1}
+
+Key point: SMIRNOFF99Frosst and GAFF v1.7 have very similar force field parameters (as expected). The parameters for GAFF 2.1 — dihedrals in particular — deviate from the values in SMIRNOFF99Frosst. Below, I compare the parameters applied to alpha-cyclodextrin in each force field. 
+
+
+\drsnote{These are the parameters applied to MGO}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-sigma}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-sigma}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-epsilon}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-epsilon}.pdf}
+\caption{A comparison of Lennard-Jones nonbonded parameters for SMIRNOFF99Frosst, GAFF v1.7, and GAFF v2.1. SMIRNOFF99Frosst has the same Lennard-Jones parameters as GAFF v1.7, but not GAFF v2.1. Compared to GAFF v2.1, SMIRNOFF99Frosst has deeper well depths for oxygens and decreased sigma values for the hydroxyl hydrogens. Values that differ by more than 10\% are labeled and colored red. Atom names refer to \ref{fig:atom-names}.}
+\label{fig:epsilon}
+\end{figure}
 
 \begin{figure}[tb]
 \centering
@@ -180,7 +205,7 @@ SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field p
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-bond-k}.pdf}
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-bond-req}.pdf}
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-bond-req}.pdf}
-\caption{Caption}
+\caption{A comparison of bonded parameters for SMIRNOFF99Frosst, GAFF v1.7, and GAFF v2.1. Compared to GAFF v1.7, SMIRNOFF99Frosst tends to have slightly larger bond force constants, except for the O-H hydroxyl bond force constant, which is much stronger. In GAFF v2.1, the O-H hydroxyl bond force constant is consistent with SMIRNOFF99Frosst, but the carbon-oxygen bond constants are weaker in GAFF v2.1. Equilibrium bond lengths are very similar. Values that differ by more than 10\% are labeled and colored red. Atom names refer to \ref{fig:atom-names}.}
 \label{fig:bond}
 \end{figure}
 
@@ -190,35 +215,8 @@ SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field p
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-ang-k}.pdf}
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-ang-theta}.pdf}
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-ang-theta}.pdf}
-\caption{Caption}
+\caption{A comparison of angle parameters for SMIRNOFF99Frosst, GAFF v1.7, and GAFF v2.1. Relative to GAFF v1.7 and GAFF v2.1, SMIRNOFF99Frosst has fewer unique angle parameters applied to alpha-cyclodextrin; several distinct parameters appear to be compressed into a single angle force constant, around 50 kcal/mol/rad2. These parameters correspond to the C-C-C, C-C-O, C-O-C, and O-C-O angles, where I omitted the exact atom names for clarity. The C-C-C angles are primarily around the ring of the glucose monomer; the C-O-C angles are both around the ring and between monomers (e.g., both C1-O1-C4 and C1-O5-C5). Weaker force constants for these parameters may lead to increased flexibility. Values that differ by more than 10\% are labeled and colored red. Atom names refer to \ref{fig:atom-names}.}
 \label{fig:angle}
-\end{figure}
-
-
-\drsnote{I wonder whether I should rename "SMIRNOFF99Frosst" to whatever the new versioning string actually is.}
-
-Both SMIRNOFF99Frosst and GAFF v1.7 systematically underestimate the binding free energy for cyclic alcohols except for beta-cyclodextrin with cyclopentanol (b-cpe).
-
-GAFF v1.7 has better correlations wiht the experimental data, specifcally with the orange points (ammonium, I think), which gets even better in GAFF v2.1, despite an increased systematic offset. 
-
-
-\susbsection{Parameter comparisons with GAFF v1.7 and GAFF v2.1}
-
-\begin{figure}[tb]
-\centering
-\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-sigma}.pdf}
-\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-sigma}.pdf}
-\caption{Caption}
-\label{fig:sigma}
-\end{figure}
-
-
-\begin{figure}[tb]
-\centering
-\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-epsilon}.pdf}
-\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-epsilon}.pdf}
-\caption{Caption}
-\label{fig:epsilon}
 \end{figure}
 
 % About Q4MD: . This force field is a combination of GLYCAM04(44-46) and Amber99SB(47) and has been reported to have good performances toward CDs using the Amber 10 software(48) in a recent paper.(43)
@@ -347,7 +345,7 @@ The authors declare the following competing financial interest(s): MKG has an eq
 \centering
 \includegraphics[width=0.49\textwidth]{images/atom-names-trimer.png}
 \includegraphics[width=0.49\textwidth]{images/gaff-atom-types.png}
-\caption{Atom names (left) and GAFF atom types (right) for a glucose monomer in alpha-cyclodextrin, shown with two flanking monomers. The remaining three glucose monomers are hidden for clarity.}
+\caption{Atom names (left) and GAFF atom types (right) for a glucose monomer in $\alpha$CD, shown with two flanking monomers. The remaining three glucose monomers are hidden for clarity.}
 \label{fig:atom-names}
 \end{figure}
 
@@ -361,6 +359,28 @@ The authors declare the following competing financial interest(s): MKG has an eq
 \label{fig:epsilon}
 \end{figure}
 
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-Experiment-TdS}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/GAFF-v1.7-vs-Experiment-TdS}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/GAFF-v2.1-vs-Experiment-TdS}.pdf}
+\caption{Caption.}
+\label{fig:TdS}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-dG-by-orientation}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-dH-by-orientation}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-TdS-by-orientation}.pdf}
+\vspace{1cm}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-dG-by-orientation}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-dH-by-orientation}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-TdS-by-orientation}.pdf}
+
+\caption{Caption.}
+\label{fig:smirnoff-vs-gaff-by-orientation}
+\end{figure}
 
 \section{List of abbreviations}
 APR, attach-pull-release; CD, cyclodextrin; GAFF, Generalized AMBER Force Field
