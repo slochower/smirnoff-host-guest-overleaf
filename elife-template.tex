@@ -144,12 +144,15 @@ SMIRNOFF99Frosst simulations calculations were run for 10 ns per window.
 %All simulations were performed with either the AMBER 14 or 163 molecular dynamics software. For each simulation window, the entire system was rebuilt using AMBER's tleap utility, thus ensuring that the initial solvent configuration in each window was independent of that in the other windows. The periodic box was orthorhombic, with dimensions of approximately 35x35x51 Å and 37x37x51 Å for αCD and βCD simulations, respectively. The host-guest system was oriented in the simulation box, via non-interacting anchor particles, which allowed the APR process to occur along the long (z) axis of the box; see Henriksen et al. for details.40  The parameter/topology file was then hydrogen mass repartitioned (HMR) with AMBER's parmed utility, a process which increases solute hydrogen atom masses to 3.024 Da by transferring mass from adjacent heavy atoms, thereby allowing larger simulation time steps without integration errors or significant changes to the thermodynamics.40,53,54 All equilibration and production simulations were carried out with the GPU-capable pmemd.cuda MD engine. Equilibration consisted of 50,000 steps of energy minimization, followed by 100 ps of NVT warming from 0 - 298.15 K, and 2000 ps of NPT equilibration at 298.15 K.  Production simulations were run for a minimum of 5.0 ns out to a maximum of 50 ns, with the exact length determined by a threshold in the restraint coordinate uncertainty. All simulations used a time step of 4 fs, enabled by HMR, with a Langevin thermostat55 and a Monte-Carlo barostat.56 The non-bonded cutoff was set to 9.0 Å and the default AMBER PME parameters (identical for AMBER 14 and 16) were employed.
 
 \subsection{Statistics}
-The overall RMSE and R2 values for each comparison are reported as the mean with the 95\% confidence interval in brackets after 100,000 bootstrapping cycles. The R2 values for each functional group subset is reported in the bottom right corner.
+The overall RMSE and R$^2$ values for each comparison are reported as the mean with the 95\% confidence interval in brackets after 100,000 bootstrapping cycles. The R$^2$ values for each functional group subset is reported in the bottom right corner.
+
+For each force field, we computed RMSE, MSE, R$^2$, Kendall $\tau$. \drsnote{What else?}
 
 \section{Results and discussion}
-SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field parameters.
+We first present a comparison on how each force field predicts binding free energies and entropies. We then discuss guest preferences between binding orientations inside the cyclodextrin cavity, the patterns that can be seen among the different guest functional groups, and finally how parameter differences are revealed in different structural insights.
 
 \subsection{Binding free energies and enthalpies}
+SMIRNOFF99Frosst predicts binding energies with an average RMSE of 0.88 kcal/mol.
 
 \begin{figure}[tb]
 \centering
@@ -158,6 +161,8 @@ SMIRNOFF99Frosst does as well as GAFF, despite far fewer numerical force field p
 \caption{Comparison of calculated absolute binding free energies ($\Delta$G) and binding enthalpies ($\Delta$H) with experiment with SMIRNOFF99Frosst parameters applied to both host and guest. The orange, blue, and purple coloring distinguish the functional group of the guest as an ammonium, alcohol, or carboxylate, respectively.}
 \label{fig:S99-vs-experiment}
 \end{figure}
+
+SMIRNOFF99Frosst does about as well as, or even better than GAFF v1.7, despite having far fewer numerical parameters. GAFF v2.1 has a large RMSE, but surprisingly strong correlation with the experimental data.
 
 \begin{figure}[tb]
 \centering
@@ -231,22 +236,14 @@ Cyclic ones can’t push away form theydorxyls so they prefer secondary (especia
 
 The amines stick out into solution.
 
+% "The"NMR"data"published"by"Rekharsky"et.al.37"does"not"show"any"indication"that"ammoniums" might" be" binding" in" the" primary" orientation," although" it" does"not" strongly" point" to" binding" in" the" secondary" orientation"either."
+
 
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-dG-by-orientation-highlight}.pdf}
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-dG-by-orientation-highlight}.pdf}
 \caption{Caption}
-\label{fig:epsilon}
-\end{figure}
-
-\begin{figure}[tb]
-\centering
-\includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-dG-by-orientation-highlight}.pdf}
-\includegraphics[width=0.49\textwidth]{{images/GAFF-v1.7-dG-by-orientation-highlight}.pdf}
-\includegraphics[width=0.49\textwidth]{{images/GAFF-v2.1-dG-by-orientation-highlight}.pdf}
-
-\caption{Caption \drsnote{I think I've done the P/S labeling backwards.}}
 \label{fig:epsilon}
 \end{figure}
 
@@ -284,8 +281,6 @@ A-coc-p doesn’t bind in teh cavity. Secondayr is closer, but not greawt either
 The flexibility of SMIRNOFF99Frosst is similiar to that of GAFF 1.7.
 The flexibility of GAFF v2.1 is similar to other carbohydrate specific force fields.
 
-Include the torsion profile plots, too.
-
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-H1-C2-C2-O2}.pdf}
@@ -307,9 +302,7 @@ Include the torsion profile plots, too.
 
 \section{Conclusions and future work}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Code and Data Availability
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\drsnote{TBD}.
 
 \section{Code and data availability}
 \begin{itemize}
@@ -334,6 +327,9 @@ Conceptualization, DRS, NMH, JDC, MKG; Methodology, DRS, NMH; Software, DRS, NMH
 \section{Disclosures}
 The authors declare the following competing financial interest(s): MKG has an equity interest in and is a cofounder and scientific advisor of VeraChem LLC.
 
+\section{List of abbreviations}
+APR, attach-pull-release; CD, cyclodextrin; GAFF, Generalized AMBER Force Field
+
 \bibliography{references}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -341,6 +337,7 @@ The authors declare the following competing financial interest(s): MKG has an eq
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \appendix
+\section{Supplementary Information}
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.49\textwidth]{images/atom-names-trimer.png}
@@ -373,15 +370,28 @@ The authors declare the following competing financial interest(s): MKG has an eq
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-dG-by-orientation}.pdf}
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-dH-by-orientation}.pdf}
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v1.7-TdS-by-orientation}.pdf}
-\vspace{1cm}
+\caption{Caption.}
+\label{fig:smirnoff-vs-gaff-v17-by-orientation}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-dG-by-orientation}.pdf}
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-dH-by-orientation}.pdf}
 \includegraphics[width=0.49\textwidth]{{images/SMIRNOFF99Frosst-vs-GAFF-v2.1-TdS-by-orientation}.pdf}
-
 \caption{Caption.}
-\label{fig:smirnoff-vs-gaff-by-orientation}
+\label{fig:smirnoff-vs-gaff-v21-by-orientation}
 \end{figure}
 
-\section{List of abbreviations}
-APR, attach-pull-release; CD, cyclodextrin; GAFF, Generalized AMBER Force Field
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\textwidth]{{images/GAFF-v2.1-vs-GAFF-v1.7-dG-by-orientation}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/GAFF-v2.1-vs-GAFF-v1.7-dH-by-orientation}.pdf}
+\includegraphics[width=0.49\textwidth]{{images/GAFF-v2.1-vs-GAFF-v1.7-TdS-by-orientation}.pdf}
+\caption{Caption.}
+\label{fig:gaff-vs-gaff-by-orientation}
+\end{figure}
+
+
 \end{document}
